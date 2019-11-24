@@ -1,20 +1,12 @@
 import pickle
 import json
-import sys
-import os
-import io
+from filename import work_dir
+
 
 try:
     from newsapi import NewsApiClient
 except ImportError: 
     from newsapi.newsapi_client import NewsApiClient
-
-sys_type=os.name
-work_dir=os.path.abspath(os.path.dirname(sys.argv[0]))
-if sys_type=='nt':
-    work_dir=work_dir+'\\'
-elif sys_type=='posix':
-    work_dir=work_dir+'/'
 
 global null
 null=''
