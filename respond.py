@@ -21,11 +21,12 @@ def interpret(message,last_state):
     words=message.split()
     if 'news' in words:
         return 'read_news'
-    if match_date(message):
+    date=match_date(message)
+    if date:
         if last_state==INPUT:
-            return 'date',None
+            return 'date',date.group()
         elif last_state==GIVEN:
-            return 'date_sort',None
+            return 'date_sort',date.group()
         else:
             return 'none',None
     for input_intent in input_intents:
@@ -39,13 +40,18 @@ def interpret(message,last_state):
     return 'none',None
 
 
-def respond(message,state,policy=policy_rules):
+def respond(message,state,search_sequence,policy=policy_rules):
     intent,addition=interpret(message)
     if intent,state in policy:
         new_state,answer=policy[(intent,state)]
-        if state in GIVEN_STATES or state in SORTED_STATES:
+        if state in GIVEN_STATES:
             assert hasattr(answer,'__call__')
             answer=answer(intent,addition)
+            search_sequence=intent,addition
+        if state in SORTED_STATES:
+            assert hasattr(answer,'__call__')
+            search_intent,search_addition=search_sequence
+            answer=answer(search_intent,search_addition,intent,addition)
         if new_state,None in policy:
             new_state,_=policy[new_state,None]
         return new_state,answer
