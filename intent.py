@@ -22,13 +22,13 @@ policy_rules={
     (INIT,'read_news'):(INPUT,'I am sure you will like these'),
     (INIT,'none'):(INIT,'I am sorry, I am only a news bot'),
     (INPUT,'none'):(DEFAULT_RANDOM_HEADLINES,'Alright, here is headlines for today\'s news'),
-    (INPUT,'keyword'):(RETURN_WITH_KEYWORD,read('keyword')),
-    (INPUT,'date'):(RETURN_WITH_DATE,read('data')),
-    (INPUT,'source'):(RETURN_WITH_SOURCE,read('source')),
-    (INPUT,'domain'):(RETURN_WITH_DOMAIN,read('domain')),
-    (GIVEN,'date_sort'):(SORT_WITH_DATE,sort()),
-    (GIVEN,'sim_sort'):(SORT_WITH_SIMILARITY,sort()),
-    (GIVEN,'pop_sort'):(SORT_WITH_POPULARITY,sort()),
+    (INPUT,'keyword'):(RETURN_WITH_KEYWORD,read),
+    (INPUT,'date'):(RETURN_WITH_DATE,read),
+    (INPUT,'source'):(RETURN_WITH_SOURCE,read),
+    (INPUT,'domain'):(RETURN_WITH_DOMAIN,read),
+    (GIVEN,'date_sort'):(SORT_WITH_DATE,sort),
+    (GIVEN,'sim_sort'):(SORT_WITH_SIMILARITY,sort),
+    (GIVEN,'pop_sort'):(SORT_WITH_POPULARITY,sort),
 }
 for GIVEN_STATE in GIVEN_STATES:
-    policy_rules[(GIVEN_STATE,None)]=(GIVEN,None) 
+    policy_rules[(GIVEN_STATE,None)]=(GIVEN,None)
