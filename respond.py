@@ -23,27 +23,29 @@ def interpret(message,last_state):
         return 'read_news'
     if match_date(message):
         if last_state==INPUT:
-            return 'date'
+            return 'date',None
         elif last_state==GIVEN:
-            return 'date_sort'
+            return 'date_sort',None
         else:
-            return 'none'
+            return 'none',None
     for input_intent in input_intents:
         if input_intent in words:
-            return input_intent
+            index=words.index(input_intent)
+            addition=words[index+1]
+            return input_intent,addtion
     for sort_intent in sort_intents:
         if sort_intent in words:
-            return sort_intent
-    return 'none'
+            return sort_intent,None
+    return 'none',None
 
 
 def respond(message,state,policy=policy_rules):
-    intent=interpret(message)
+    intent,addition=interpret(message)
     if intent,state in policy:
         new_state,answer=policy[(intent,state)]
         if state in GIVEN_STATES or state in SORTED_STATES:
             assert hasattr(answer,'__call__')
-            answer=answer(intent)
+            answer=answer(intent,addition)
         if new_state,None in policy:
             new_state,_=policy[new_state,None]
         return new_state,answer
