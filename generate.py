@@ -34,10 +34,6 @@ def sort(search_type,search_addition,sort_type,addition):
     return titles
 
 
-def read_with_keyword():
-    pass
-
-
 if __name__=='__main__':
     print(read('keyword','france'))
     print(sort('keyword','france','date_sort','2019-11-23'))

@@ -35,6 +35,11 @@ DEFAULT=[
 ]
 
 
+SHOW_LIST=[
+    'Oh here is a list of {0}'
+]
+
+
 INPUT_ANSWER=[
     
 ]
