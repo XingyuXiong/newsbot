@@ -11,13 +11,10 @@
         <div id='chatbox'>
           <div id='scrollbox'>
             <p></p>
-            <div id='scrollbar'>
-              scroll
-            </div>
           </div>
           <div id='inputline'>
-            <div id='inputbox'>
-            </div>
+            <input id='inputbox'>
+            </input>
             <button id='inputbutton'>✓</button> 
           </div>
         </div>
@@ -60,23 +57,23 @@
     left: 5%;
   }
   #scrollbox{
-    float: top;
     height: 90%;
   }
   #inputline{
     height: 10%;
-    float: top;
     background-color: rgb(245,245,255);
     position: relative;
+    bottom: 4%;
   }
   #inputbox{
     height: 50%;
-    width: 70%;
+    width: 75%;
     position: absolute;
-    top: 25%;
-    left: 10%;
+    top: 20%;
+    left: 5%;
     background-color: rgb(255,255,255);
     border-radius: 20px;
+    border: none;
   }
   #inputbutton{
     height: 20px;
@@ -88,12 +85,5 @@
     margin-top: -10px;
     background-color: rgb(200,200,240);
     border: none;
-  }
-  #scrollbar{
-    width: 20px;
-    height: 100%;
-    background: rgb(255,255,255);
-    position: absolute;
-    right: 0;
   }
 </style>
