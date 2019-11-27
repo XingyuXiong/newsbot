@@ -9,7 +9,14 @@
     <div id='app'>
       <div id='wholebox'>
         <div id='chatbox'>
-          <p>hello</p>
+          <div id='scrollbox'>
+            <p>this is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a messagethis is a message</p>
+          </div>
+          <div id='inputline'>
+            <div id='inputbox'>
+            </div>
+            <button id='inputbutton'>✓</button> 
+          </div>
         </div>
       </div>
     </div>
@@ -18,31 +25,69 @@
 </html>
 
 <script type='text/javascript'>
+  console.log(getComputedStyle(document.getElementById('wholebox'))['width'])
+  console.log(getComputedStyle(document.getElementById('wholebox'))['height'])
+  
   function getStyle(element, attr){
     if(element.currentStyle){
       return element.currentStyle[attr];
     }else{
-      return getComputedStyle(element, false)[attr];
+      return window.getComputedStyle(element, false)[attr];
     }
   }
   var wholebox=document.getElementById('wholebox')
   var chatbox=document.getElementById('chatbox')
-  var w=wholebox.style.width
-  chatbox.style.width=parseInt(getStyle(wholebox,'width') - 100)+'px'
-  chatbox.style.height=parseInt(wholebox.style.height - 100)+'px'
-  console.log(w)
+
+  
 </script>
 
 <style>
   #wholebox{
-    width: 300px;
-    height: 400px;
+    width: 250px;
+    height: 450px;
     margin:0 auto;
     background-color: rgb(224,224,240);
     border-radius: 20px;
-    padding: 20px 30px;
+    position: relative;
   }
   #chatbox{
+    width: 90%;
+    height: 90%;
+    margin:0 auto;
     background-color: rgb(240,240,250);
+    position: absolute;
+    top: 5%;
+    left: 5%;
+  }
+  #scrollbox{
+    overflow: scroll;
+    float: top;
+    height: 90%;
+  }
+  #inputline{
+    height: 10%;
+    float: top;
+    background-color: rgb(245,245,255);
+    position: relative;
+  }
+  #inputbox{
+    height: 50%;
+    width: 70%;
+    position: absolute;
+    top: 25%;
+    left: 10%;
+    background-color: rgb(255,255,255);
+    border-radius: 20px;
+  }
+  #inputbutton{
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    margin-top: -10px;
+    background-color: rgb(200,200,240);
+    border: none;
   }
 </style>
