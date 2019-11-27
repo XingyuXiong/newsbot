@@ -10,3 +10,4 @@ elif sys_type=='posix':
 
 
 spacy_model_name='spacy_model'
+html_file=work_dir+'newsbot/index.html'

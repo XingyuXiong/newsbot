@@ -7,6 +7,10 @@ import time
 from googletrans import Translator
 from trans import trans
 from filename import spacy_model_name,work_dir
+from respond import start,respond
+
+
+RUNNING=True
 
 
 def read_write_file(file,object=None):
@@ -26,6 +30,7 @@ source='你好'#can not be none
 text=trans(translator,source)
 print(text)
 '''
+'''
 load_start=time.time()
 nlp=None
 if not os.path.exists(spacy_model_name):
@@ -33,3 +38,18 @@ if not os.path.exists(spacy_model_name):
 nlp=read_write_file(spacy_model_name,nlp)
 load_end=time.time()
 print('loading model spends {0}s'.format(load_end-load_start))
+'''
+def receive():
+    pass
+
+
+def send(message):
+    pass
+
+    
+if __name__=='__main__':
+    'no init greetings'
+    answer,state,search_sequence=start()
+    while(RUNNING):
+        message=receive()
+        answer,state,search_sequence=respond(message,state,search_sequence)
