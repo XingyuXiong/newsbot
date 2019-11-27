@@ -1,6 +1,6 @@
-from intent import *
 import re
-from answer_dictionary import DEFAULT,INIT_GREETINGS,SHOW_LIST
+from .intent import *
+from .answer_dictionary import DEFAULT,INIT_GREETINGS,SHOW_LIST
 
 
 input_intents=['keyword','source','domain']

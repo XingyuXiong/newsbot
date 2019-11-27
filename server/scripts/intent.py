@@ -1,5 +1,5 @@
-from answer_dictionary import *
-from generate import read,sort
+from .answer_dictionary import *
+from .generate import read,sort
 
 
 INIT=0

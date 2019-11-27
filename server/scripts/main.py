@@ -5,9 +5,9 @@ import os
 import sys
 import time
 from googletrans import Translator
-from trans import trans
-from filename import spacy_model_name,work_dir
-from respond import start,respond
+from .trans import trans
+from .filename import spacy_model_name,work_dir
+from .respond import start,respond
 
 
 RUNNING=True
@@ -45,6 +45,10 @@ def receive():
 
 def send(message):
     pass
+
+
+def receive_respond(message):
+    return 'test-bot-message'
 
     
 if __name__=='__main__':

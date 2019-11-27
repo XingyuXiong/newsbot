@@ -1,5 +1,5 @@
 from newsapi import NewsApiClient
-from tools import get_from_dict
+from .tools import get_from_dict
 
 max_return_num=2
 

@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators import csrf
+from scripts.main import receive_respond
 import os
 import sys
 
@@ -11,7 +12,8 @@ html_file=work_dir+r'\newsbot\index.html'
 
 
 def accept(request):
-    ctx={}
+    ctx={'default':'only for testing'}
     if request.POST:
-        ctx['rlt']=request.POST['q']
+        ctx['user_message']=request.POST['q']
+        ctx['bot_message']=receive_respond(request.POST['q'])
     return render(request,html_file,ctx)

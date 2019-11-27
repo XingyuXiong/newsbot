@@ -10,14 +10,13 @@
       <div id='wholebox'>
         <div id='chatbox'>
           <div id='scrollbox'>
-            <p></p>
           </div>
           <div id='inputline'>
-            <form action='/accept' method="post">
+            <form id='form' action='/accept' method="post">
               {% csrf_token %}
-              <input id='inputbox' type="text">
+              <input id='inputbox' type="text" name="q">
               </input>
-              <button id='inputbutton' type='submit'>✓</button> 
+              <input id='inputbutton' type='submit' onsubmit="creatediv('user')" value='✓'></input> 
             </form>
           </div>
         </div>
@@ -35,10 +34,25 @@
       return window.getComputedStyle(element, false)[attr];
     }
   }
-  var wholebox=document.getElementById('wholebox')
-  var chatbox=document.getElementById('chatbox')
-
-  
+  var inputbox = document.getElementById('inputbox')
+  var scrollbox = document.getElementById('scrollbox')
+  form.onsubmit = function(e){
+    e.preventDefault()
+    creatediv()
+  }
+  function creatediv(messagetype = 'user'){
+    var div = document.createElement('div')
+    //div.innerHTML = 'new div'
+    if (messagetype === 'user'){
+      div.innerHTML = inputbox.value
+      inputbox.value = ''
+      div.className = 'usermessage'  
+    }
+    else if (messagetype === 'bot'){
+      div.className = 'botmessage'
+    }
+    scrollbox.appendChild(div)
+  }
 </script>
 
 <style>
@@ -58,6 +72,7 @@
     position: absolute;
     top: 5%;
     left: 5%;
+    overflow: hidden;
   }
   #scrollbox{
     height: 90%;
@@ -66,7 +81,7 @@
     height: 10%;
     background-color: rgb(245,245,255);
     position: relative;
-    bottom: 4%;
+    bottom: 0%;
   }
   #inputbox{
     height: 50%;
@@ -88,5 +103,25 @@
     margin-top: -10px;
     background-color: rgb(200,200,240);
     border: none;
+  }
+  .usermessage{
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    float: right;
+    clear: both;
+    background-color: rgb(245,255,245);
+    margin: 5px;
+    padding: 0px 10px;
+  }
+  .botmessage{
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    float: left;
+    clear: both;
+    background-color: rgb(255,245,245);
+    margin: 5px;
+    padding: 0px 10px;
   }
 </style>

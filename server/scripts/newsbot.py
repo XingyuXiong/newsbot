@@ -1,6 +1,6 @@
 import pickle
 import json
-from filename import work_dir
+from .filename import work_dir
 
 
 try:
