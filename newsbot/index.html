@@ -36,9 +36,12 @@
   }
   var inputbox = document.getElementById('inputbox')
   var scrollbox = document.getElementById('scrollbox')
+  //var contextPath = {{ user_message }}
+  console.log( '{{ default }}')
   form.onsubmit = function(e){
     e.preventDefault()
     creatediv()
+    creatediv('bot')
   }
   function creatediv(messagetype = 'user'){
     var div = document.createElement('div')
@@ -46,9 +49,10 @@
     if (messagetype === 'user'){
       div.innerHTML = inputbox.value
       inputbox.value = ''
-      div.className = 'usermessage'  
+      div.className = 'usermessage'
     }
     else if (messagetype === 'bot'){
+      div.innerHTML = '{{ bot_message }}'
       div.className = 'botmessage'
     }
     scrollbox.appendChild(div)
