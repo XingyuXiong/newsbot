@@ -4,10 +4,14 @@ import pickle
 import os
 import sys
 import time
+import json
 from googletrans import Translator
-from .trans import trans
-from .filename import spacy_model_name,work_dir
-from .respond import start,respond
+if __package__:
+    from scripts.filename import spacy_model_name,work_dir
+    from scripts.respond import start,respond
+else:
+    from filename import spacy_model_name,work_dir
+    from respond import start,respond
 
 
 RUNNING=True
@@ -21,7 +25,6 @@ def read_write_file(file,object=None):
         with open(file,'wb') as f:
             pickle.dump(object,f)
             return object
-
 
 'test'
 '''
@@ -47,13 +50,6 @@ def send(message):
     pass
 
 
-def receive_respond(message):
-    return 'test-bot-message'
-
-    
-if __name__=='__main__':
-    'no init greetings'
-    answer,state,search_sequence=start()
-    while(RUNNING):
-        message=receive()
-        answer,state,search_sequence=respond(message,state,search_sequence)
+def receive_respond(message,state,search_sequence):
+    answer,state,search_sequence=respond(message,state,search_sequence)
+    return answer,state,search_sequence

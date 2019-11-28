@@ -14,9 +14,9 @@
           <div id='inputline'>
             <form id='form' action='/accept' method="post">
               {% csrf_token %}
-              <input id='inputbox' type="text" name="q">
-              </input>
-              <input id='inputbutton' type='submit' onsubmit="creatediv('user')" value='✓'></input> 
+              <input id='inputbox' type="text" name="q"></input>
+              <input id='hiddenbox' type='hidden' name='hidden'></form>
+              <input id='inputbutton' type='submit' onsubmit="creatediv('user')" value='✓'></input>
             </form>
           </div>
         </div>
@@ -27,6 +27,7 @@
 </html>
 
 <script type='text/javascript'>
+  var count = 1
   function getStyle(element, attr){
     if(element.currentStyle){
       return element.currentStyle[attr];
@@ -35,11 +36,13 @@
     }
   }
   var inputbox = document.getElementById('inputbox')
+  var hiddenbox = document.getElementById('hiddenbox')
   var scrollbox = document.getElementById('scrollbox')
   //var contextPath = {{ user_message }}
-  console.log( '{{ default }}')
   form.onsubmit = function(e){
     e.preventDefault()
+    hiddenbox.value = count
+    count = count + 1
     creatediv()
     creatediv('bot')
   }

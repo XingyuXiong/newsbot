@@ -1,6 +1,10 @@
 import re
-from .intent import *
-from .answer_dictionary import DEFAULT,INIT_GREETINGS,SHOW_LIST
+if __package__:
+    from scripts.intent import *
+    from scripts.answer_dictionary import DEFAULT,INIT_GREETINGS,SHOW_LIST 
+else:
+    from intent import *
+    from answer_dictionary import DEFAULT,INIT_GREETINGS,SHOW_LIST
 
 
 input_intents=['keyword','source','domain']
@@ -72,7 +76,7 @@ def format_list(title_list):
 def start():
     state=0
     answer=INIT_GREETINGS[0]
-    search_sequence=None
+    search_sequence=('','')
     return answer,state,search_sequence
 
 

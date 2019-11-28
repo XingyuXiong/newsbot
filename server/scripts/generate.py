@@ -1,5 +1,8 @@
 from newsapi import NewsApiClient
-from .tools import get_from_dict
+if __package__:
+    from scripts.tools import get_from_dict
+else:
+    from tools import get_from_dict
 
 max_return_num=2
 

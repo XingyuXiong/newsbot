@@ -1,0 +1,12 @@
+[
+    {
+        "model": "server.State",
+        "pk": 0,
+        "fields": {
+            "answer": "",
+            "state": 0,
+            "intent": "",
+            "addition": ""
+        }
+    }
+]

@@ -1,5 +1,9 @@
-from .answer_dictionary import *
-from .generate import read,sort
+if __package__:
+    from scripts.answer_dictionary import *
+    from scripts.generate import read,sort
+else:
+    from answer_dictionary import *
+    from generate import read,sort
 
 
 INIT=0
