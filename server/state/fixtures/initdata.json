@@ -1,12 +1,12 @@
 [
     {
-        "model": "server.State",
-        "pk": 0,
+        "model": "state.State",
         "fields": {
             "answer": "",
             "state": 0,
             "intent": "",
-            "addition": ""
+            "addition": "",
+            "timestep": 0
         }
     }
 ]
