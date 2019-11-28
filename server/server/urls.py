@@ -19,5 +19,6 @@ from state import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accept',views.accept),
+    path('accept', views.accept),
+    path('', views.home),
 ]

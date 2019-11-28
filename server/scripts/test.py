@@ -1,2 +1,2 @@
-
-import main
+__package__=state
+import state.views
