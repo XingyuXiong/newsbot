@@ -1,2 +1,2 @@
-__package__=state
-import state.views
+__package__='state'
+from .views import *

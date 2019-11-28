@@ -2,8 +2,10 @@ from django.db import models
 
 
 class State(models.Model):
-    answer = models.CharField(max_length=128,null=True)
-    state = models.IntegerField()
-    intent = models.CharField(max_length=32,null=True)
-    addition = models.CharField(max_length=32,null=True)
-    timestep = models.IntegerField()
+    'blank=True is not needed with more accurate sql queries'
+    'null=True should be avoided'
+    answer = models.CharField(max_length=128,null=True,blank=True)
+    state = models.IntegerField(null=True,blank=True)
+    intent = models.CharField(max_length=32,null=True,blank=True)
+    addition = models.CharField(max_length=32,null=True,blank=True)
+    timestep = models.IntegerField(null=True,blank=True)

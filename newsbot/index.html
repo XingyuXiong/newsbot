@@ -48,26 +48,26 @@
       type: form.attr('method'),
       url: form.attr('action'),
       data: form.serialize(),
+      dataType: 'json',
       success: function(data){
-        console.log(data)
+        console.log(data['bot_message'])
+        creatediv(data['bot_message'])
       }
     })
-    count = count + 1    
-    creatediv('user')
-    creatediv('bot')
+    count = count + 1
   }
-  function creatediv(messagetype = 'user'){
-    var div = document.createElement('div')
-    if (messagetype === 'user'){
-      div.innerHTML = inputbox.value
-      inputbox.value = ''
-      div.className = 'usermessage'
-    }
-    else if (messagetype === 'bot'){
-      div.innerHTML = '{{ bot_message }}'
-      div.className = 'botmessage'
-    }
-    scrollbox.appendChild(div)
+  function creatediv(botmessage){
+    var usr = document.createElement('div')
+    usr.innerHTML = inputbox.value
+    inputbox.value = ''
+    usr.className = 'usermessage'
+    scrollbox.appendChild(usr)
+
+    var bot = document.createElement('div')
+    bot.innerHTML = botmessage
+    bot.className = 'botmessage'
+    
+    scrollbox.appendChild(bot)
   }
 </script>
 
