@@ -53,3 +53,7 @@ def send(message):
 def receive_respond(message,state,search_sequence):
     answer,state,search_sequence=respond(message,state,search_sequence)
     return answer,state,search_sequence
+
+
+if __name__=='__main__':
+    pass
