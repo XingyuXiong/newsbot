@@ -1,6 +1,6 @@
 ## DEMO
 
-https://github.com/XingyuXiong/newsbot/demo.gif
+https://github.com/XingyuXiong/newsbot/blob/master/demo.gif
 
 ## 说明
 
