@@ -70,6 +70,7 @@
     bot.innerHTML = botmessage
     bot.className = 'botmessage' 
     scrollbox.appendChild(bot)
+    scrollbox.scrollTop = scrollbox.scrollHeight
   })
 </script>
 
@@ -90,10 +91,13 @@
     position: absolute;
     top: 5%;
     left: 5%;
-    overflow: hidden;
   }
   #scrollbox{
     height: 90%;
+    overflow-y: auto;
+  }
+  #scrollbox::-webkit-scrollbar{
+    display: none;
   }
   #inputline{
     height: 10%;
