@@ -64,8 +64,6 @@ def respond(message,state,search_sequence,policy=policy_rules):
             answer=format_list(answer)
         if (new_state,None) in policy:
             new_state,_=policy[new_state,None]
-        print('from respond')
-        print((answer,new_state,search_sequence))
         return answer,new_state,search_sequence
     else:
         return DEFAULT[0],state,search_sequence

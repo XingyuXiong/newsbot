@@ -17,7 +17,7 @@
               {% csrf_token %}
               <input id='inputbox' type="text" name="q"></input>
               <input id='hiddenbox' type='hidden' name='hidden'></form>
-              <input id='inputbutton' type='submit' value='✓'></input>
+              <input id='inputbutton' action='/accept' method="post" type='submit' value='✓'></input>
             </form>
           </div>
         </div>
@@ -43,7 +43,7 @@
     e.preventDefault()
     //states start with time_step 0, here send the time step of the state after user send a message'
     var form = $(this)
-    hiddenbox.value = count    
+    hiddenbox.value = count
     $.ajax({
       type: form.attr('method'),
       url: form.attr('action'),
@@ -51,24 +51,26 @@
       dataType: 'json',
       success: function(data){
         console.log(data['bot_message'])
-        creatediv(data['bot_message'])
+        createuserdiv().then(() => creatediv(data['bot_message']))
       }
     })
     count = count + 1
   }
-  function creatediv(botmessage){
+  var createuserdiv = () => new Promise((resolve,reject) =>{
     var usr = document.createElement('div')
     usr.innerHTML = inputbox.value
     inputbox.value = ''
     usr.className = 'usermessage'
     scrollbox.appendChild(usr)
-
+    setTimeout(() => resolve('createuserdiv'),1)
+  })
+  var creatediv = (botmessage) => new Promise((resolve,reject) =>{
+    console.log('bot')
     var bot = document.createElement('div')
     bot.innerHTML = botmessage
-    bot.className = 'botmessage'
-    
+    bot.className = 'botmessage' 
     scrollbox.appendChild(bot)
-  }
+  })
 </script>
 
 <style>
