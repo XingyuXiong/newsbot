@@ -58,12 +58,14 @@ def respond(message,state,search_sequence,policy=policy_rules):
             search_sequence=intent,addition
         if new_state in SORTED_STATES:
             assert hasattr(answer,'__call__')
-            search_intent,search_addition=search_sequence
+            (search_intent,search_addition)=search_sequence
             answer=answer(search_intent,search_addition,intent,addition)
             assert type(answer)==list
             answer=format_list(answer)
         if (new_state,None) in policy:
             new_state,_=policy[new_state,None]
+        print('from respond')
+        print((answer,new_state,search_sequence))
         return answer,new_state,search_sequence
     else:
         return DEFAULT[0],state,search_sequence
