@@ -1,6 +1,6 @@
 ## DEMO
 
-！[image](https://github.com/XingyuXiong/newsbot/blob/master/demo.gif)
+![image](https://github.com/XingyuXiong/newsbot/blob/master/demo.gif)
 
 ## 说明
 
