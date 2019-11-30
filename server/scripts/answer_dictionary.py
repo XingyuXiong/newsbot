@@ -1,6 +1,13 @@
 #
 
 
+_SEARCH_METHODS=[
+    'search by keyword: "keyword" *',
+    'search by date: "date" *',
+    'search by source: "source" *',
+    'search by domain: "domain" *',
+]
+
 YES_ANSWERS=[
     'Sure'
     'Ok',
@@ -16,10 +23,16 @@ NO_ANSWERS=[
 ]
 
 
+NEWS_INQUIRY=[
+    'What kind of news do you like?<br>'+'<br>'.join(_SEARCH_METHODS),
+    'Hi I am a newsbot, try to type:"news" to get some news',
+]
+
+
 UNCERTAIN_ANSWERS=[
     'I do not know',
     'I am not sure',
-    'I do not understand'
+    'I do not understand',
 ]
 
 
@@ -31,12 +44,13 @@ INIT_GREETINGS=[
 
 
 DEFAULT=[
-    'Hi I am a newsbot'
+    'This is a default message'
 ]
 
 
 SHOW_LIST=[
-    'Oh here is a list of {0}'
+    'Oh here is a list of titles:{0}'
+    'This is one of the news you want:{0}'
 ]
 
 

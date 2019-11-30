@@ -1,5 +1,4 @@
 # utf-8
-import spacy
 import pickle
 import os
 import sys
