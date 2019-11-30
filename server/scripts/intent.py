@@ -23,9 +23,10 @@ SORTED_STATES=[SORT_WITH_DATE,SORT_WITH_SIMILARITY,SORT_WITH_POPULARITY]
 
 
 policy_rules={
-    (INIT,'read_news'):(INPUT,'What kind of news do you like?'),
-    (INIT,'none'):(INIT,'I am sorry, I am only a news bot'),
+    (INIT,'read_news'):(INPUT,NEWS_INQUIRY[0]),
+    (INIT,'none'):(INIT,NEWS_INQUIRY[1]),
     #(INPUT,'none'):(DEFAULT_RANDOM_HEADLINES,'Alright, here is headlines for today\'s news'),
+    (INPUT,'none'):(INIT,NEWS_INQUIRY[1]),
     (INPUT,'keyword'):(RETURN_WITH_KEYWORD,read),
     (INPUT,'date'):(RETURN_WITH_DATE,read),
     (INPUT,'source'):(RETURN_WITH_SOURCE,read),

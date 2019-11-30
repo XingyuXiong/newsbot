@@ -1,4 +1,7 @@
-from newsapi import NewsApiClient
+try:
+    from newsapi import NewsApiClient
+except:
+    from newsapi.newsapi_client import NewsApiClient
 if __package__:
     from scripts.tools import get_from_dict
 else:
