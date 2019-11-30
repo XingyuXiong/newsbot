@@ -49,8 +49,8 @@ DEFAULT=[
 
 
 SHOW_LIST=[
-    'Oh here is a list of titles:{0}'
-    'This is one of the news you want:{0}'
+    'Oh here is a list of titles:<br>{0}<br>which one do you like?',
+    'This is one of the news you want:{0}<br>'
 ]
 
 

@@ -18,9 +18,8 @@ def accept(request):
     if request.POST:
         hidden_info=request.POST['hidden']
         ctx['user_message']=request.POST['q']
-    print(ctx)
     curr_step=int(hidden_info or 0)
-    print(curr_step)
+    print(ctx)
     obj=State.objects.filter(timestep=curr_step)[0]
     state,intent,addition=0,'',''
     if obj:
@@ -28,7 +27,6 @@ def accept(request):
     answer,state,search_sequence=receive_respond(message=ctx['user_message'],state=state,search_sequence=(intent,addition))
     print((answer,state,search_sequence,curr_step))
     intent,addition=search_sequence[0],search_sequence[1]
-    print(intent)
     ctx['bot_message']=answer
     next_obj_list=State.objects.filter(timestep=curr_step+1)
     if next_obj_list:

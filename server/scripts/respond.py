@@ -8,7 +8,7 @@ else:
 
 
 input_intents=['keyword','source','domain']
-sort_intents=['similar','popular']
+sort_intents=['relevant','popular']
 
 
 def match_date(message):
@@ -70,7 +70,7 @@ def respond(message,state,search_sequence,policy=policy_rules):
 
 
 def format_list(title_list):
-    return SHOW_LIST[0].format('<br>'.join(['"'+title+'"' for title in title_list]))
+    return SHOW_LIST[0].format('<br>'.join(['"<b>'+title+'</b>"' for title in title_list]))
 
 
 def start():

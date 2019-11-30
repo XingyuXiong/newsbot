@@ -18,7 +18,6 @@ search_param={'keyword':'q','sources':'sources','domain':'domains'}
 def read(search_type,addition):
     articles=None
     articles=eval('newsapi.get_everything({0}="{1}")'.format(search_param[search_type],addition))
-
     articles=articles['articles'][:max_return_num]
     #print(articles)
     titles=get_from_dict(articles,'title')
@@ -26,7 +25,7 @@ def read(search_type,addition):
     return titles
 
 
-sort_param={'popular':'top','similar':'relevancy','date_sort':'publishedAt'}
+sort_param={'popular':'popularity','similar':'relevancy','date_sort':'publishedAt'}
 def sort(search_type,search_addition,sort_type,addition):
     articles=None
     if sort_type=='date_sort' and addition:
