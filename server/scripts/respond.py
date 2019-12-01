@@ -9,7 +9,7 @@ else:
 
 input_intents=['keyword','source','domain']
 sort_intents=['relevant','popular']
-
+KEYWORD_NER=False
 
 
 def match_date(message):
@@ -38,11 +38,20 @@ def interpret(message,last_state):
             return 'date_sort',date.group()
         else:
             return 'none',None
-    for input_intent in input_intents:
-        if input_intent in words:
-            index=words.index(input_intent)
-            addition=words[index+1]
-            return input_intent,addition
+    if KEYWORD_NER:
+        import spacy
+        nlp=spacy.load('en_core_web_md')
+        intent='keyword'
+        doc=nlp(message)
+        if doc.ents:
+            addition=doc.ents[-1]
+            return intent,addition
+    else:
+        for input_intent in input_intents:
+            if input_intent in words:
+                index=words.index(input_intent)
+                addition=words[index+1]
+                return input_intent,addition
     for sort_intent in sort_intents:
         if sort_intent in words:
             return sort_intent,None
