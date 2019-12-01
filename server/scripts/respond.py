@@ -11,6 +11,7 @@ input_intents=['keyword','source','domain']
 sort_intents=['relevant','popular']
 
 
+
 def match_date(message):
     connections=['\.','/','-']
     l=['([0-9]{4})','([0-9]{1,2})','([0-9]{1,2})']
@@ -18,6 +19,11 @@ def match_date(message):
     pattern_string='|'.join(pattern_string)
     date_pattern=re.compile(pattern_string)
     return date_pattern.search(message)
+
+
+def match_num(message):
+    pattern=re.compile('[1-9]')
+    return pattern.match(message)
 
 
 def interpret(message,last_state):
@@ -40,6 +46,9 @@ def interpret(message,last_state):
     for sort_intent in sort_intents:
         if sort_intent in words:
             return sort_intent,None
+    num=match_num(message)
+    if last_state==GIVEN and num:
+        return 'choose',int(num.group(0))
     return 'none',None
 
 
@@ -62,6 +71,10 @@ def respond(message,state,search_sequence,policy=policy_rules):
             answer=answer(search_intent,search_addition,intent,addition)
             assert type(answer)==list
             answer=format_list(answer)
+        if new_state==GIVEN_CHOOSE:
+            assert hasattr(answer,'__call__')
+            (search_intent,search_addition)=search_sequence
+            answer=answer(search_intent,search_addition,return_type='url',num=addition)
         if (new_state,None) in policy:
             new_state,_=policy[new_state,None]
         return answer,new_state,search_sequence

@@ -7,7 +7,7 @@ if __package__:
 else:
     from tools import get_from_dict
 
-max_return_num=2
+max_return_num=5
 
 
 api_key='793110ecda064a68846a1510d0e7d0ae'
@@ -15,14 +15,17 @@ newsapi=NewsApiClient(api_key=api_key)
 
 
 search_param={'keyword':'q','sources':'sources','domain':'domains'}
-def read(search_type,addition):
+def read(search_type,addition,return_type='title',num=None):
     articles=None
     articles=eval('newsapi.get_everything({0}="{1}")'.format(search_param[search_type],addition))
     articles=articles['articles'][:max_return_num]
     #print(articles)
-    titles=get_from_dict(articles,'title')
+    return_data=get_from_dict(articles,return_type)
+    if num:
+        if num>=1 and num<=len(return_data):
+            return_data=return_data[num-1]
     #print(titles)
-    return titles
+    return return_data
 
 
 sort_param={'popular':'popularity','similar':'relevancy','date_sort':'publishedAt'}

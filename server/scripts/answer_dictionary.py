@@ -9,10 +9,8 @@ _SEARCH_METHODS=[
 ]
 
 YES_ANSWERS=[
-    'Sure'
-    'Ok',
+    'Sure<br>{0}',
     'No problem',
-    'Get it',
 ]
 
 
