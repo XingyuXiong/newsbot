@@ -30,13 +30,15 @@
 <script>
   var whole = document.getElementById('wholebox')
   var ua = navigator.userAgent
+  print(ua)
+  console.log(ua)
   var ipad = ua.match(/(iPad).*OS\s(\d_]+)/),
-  isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/)
+  isIphone = !ipad && ua.match(/(iPhone)\sOS)\s([\d_]+)/)
   isAndroid = ua.match(/(Android)\s+([\d.]+)/)
-  isMobile = isIphone || isAndroid
+  isMobile = isIphone || is Android
   if(isMobile){
-    whole.style.width = '300px'
-    whole.style.height = '500px'
+    whole.style.width = '180px'
+    whole.style.height = '350px'
   }
 
   var count = 0
@@ -86,8 +88,8 @@
 
 <style>
   #wholebox{
-    width: 400px;
-    height: 680px;
+    width: 250px;
+    height: 450px;
     margin:0 auto;
     background-color: rgb(224,224,240);
     border-radius: 20px;
