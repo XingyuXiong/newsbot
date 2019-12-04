@@ -4,6 +4,13 @@
 
 ---
 
+### 运行
+cd /newsbot/server
+python manage.py runserver
+于127.0.0.1：8000端口进行访问
+
+---
+
 ### 说明
 
 本程序一个基于newsapi的新闻获取机器人newsbot
